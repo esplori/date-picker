@@ -2,11 +2,11 @@
   <div class="date-picker">
     <div>
       <div class="year-month">
-        <span>&lt;&lt;</span>
+        <span @click="yearChangeDown">&lt;&lt;</span>
         <span @click="monthChangeDown">&lt;</span>
         {{currentYear}} 年{{currentMonth}} 月
-        <span>&gt;</span>
-        <span>&gt;&gt;</span>
+        <span @click="monthChangeUp">&gt;</span>
+        <span @click="yearChangeUp">&gt;&gt;</span>
       </div>
       <ul class="days-container">
         <li v-for="(item, index) in dayList" :key="index" class="single-day">{{item}}</li>
@@ -28,8 +28,21 @@ export default {
     this.randerDayList()
   },
   methods: {
+    yearChangeDown () {
+      this.currentYear = --this.currentYear
+      debugger
+      this.randerDayList()
+    },
+    yearChangeUp () {
+      this.currentYear = ++this.currentYear
+      this.randerDayList()
+    },
     monthChangeDown () {
       this.currentMonth = --this.currentMonth
+      this.randerDayList()
+    },
+    monthChangeUp () {
+      this.currentMonth = ++this.currentMonth
       this.randerDayList()
     },
     randerDayList () {
