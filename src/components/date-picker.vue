@@ -30,7 +30,6 @@ export default {
   methods: {
     yearChangeDown () {
       this.currentYear = --this.currentYear
-      debugger
       this.randerDayList()
     },
     yearChangeUp () {
@@ -38,12 +37,26 @@ export default {
       this.randerDayList()
     },
     monthChangeDown () {
+      this.handleMonthDown(this.currentMonth)
       this.currentMonth = --this.currentMonth
       this.randerDayList()
     },
     monthChangeUp () {
+      this.handleMonthUP(this.currentMonth)
       this.currentMonth = ++this.currentMonth
       this.randerDayList()
+    },
+    handleMonthUP (month) {
+      if (month >= 12) {
+        this.currentMonth = 0
+        this.currentYear = ++this.currentYear
+      }
+    },
+    handleMonthDown (month) {
+      if (month <= 1) {
+        this.currentMonth = 13
+        this.currentYear = --this.currentYear
+      }
     },
     randerDayList () {
       let days = this.getCurrentMonthDays(this.currentYear, this.currentMonth)
