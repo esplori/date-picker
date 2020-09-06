@@ -1,7 +1,13 @@
 <template>
   <div class="date-picker">
     <div>
-      <div class="year-month"><span>&lt;&lt;</span> <span @click="monthChangeDown">&lt;</span> {{currentYear}} 年{{currentMonth}} 月 <span>&gt;</span> <span>&gt;&gt;</span></div>
+      <div class="year-month">
+        <span>&lt;&lt;</span>
+        <span @click="monthChangeDown">&lt;</span>
+        {{currentYear}} 年{{currentMonth}} 月
+        <span>&gt;</span>
+        <span>&gt;&gt;</span>
+      </div>
       <ul class="days-container">
         <li v-for="(item, index) in dayList" :key="index" class="single-day">{{item}}</li>
       </ul>
@@ -23,7 +29,6 @@ export default {
   },
   methods: {
     monthChangeDown () {
-      debugger
       this.currentMonth = --this.currentMonth
       this.randerDayList()
     },
@@ -81,24 +86,25 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.date-picker{
+<style scoped lang="less">
+.date-picker {
   width: 50%;
   margin: 0 auto;
-}
-.days-container{
-  width:370px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  text-align: left;
-}
-.single-day{
-  display: inline-block;
-  width: 29px;
-  padding: 11px;
-}
-.year-month{
-  width:370px;
-  text-align: center;
+  .days-container {
+    width: 370px;
+    padding: 20px;
+    border: 1px solid #dddddd;
+    text-align: left;
+    .single-day {
+      display: inline-block;
+      width: 29px;
+      padding: 11px;
+    }
+  }
+
+  .year-month {
+    width: 370px;
+    text-align: center;
+  }
 }
 </style>>

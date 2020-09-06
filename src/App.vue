@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <HelloWorld/>
+    <datePicker/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import datePicker from './components/date-picker'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    datePicker
   }
 }
 </script>
